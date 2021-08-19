@@ -197,11 +197,11 @@ You may update both simultaneously from Visual Studio by selecting.
 
 What is the difference between Git and GitHub?
 
- - Answer:
+ - Answer: The difference between Git and GitHub is that Git is where one actually interacts and works with the program whereas GitHub is the online repository of that work.
 
 What is the difference between a git commit and a git push?
 
- - Answer:
+ - Answer: The difference between a git commit and a git push is that 
 
 What is the difference between a pull, and an upstream pull?
 
