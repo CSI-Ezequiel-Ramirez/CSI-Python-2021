@@ -105,8 +105,8 @@ Define the boolean operators: >, <, ==, >=, <=
 How do you address an index in an list? Write a python code that assigns 34 to a new variable by accessing the value stored in:  
         arr = [4, 3, -1, 4, 34]
 
- - Answer: You address an index in a list by writing first the name of the list followed by an open bracket, the index itself, and a closed bracket.
- Example: arr[4]
+ - Answer: You address an index in a list by writing first the name of the new vaariable followed by the name of the list and then an open bracket, the index itself, and a closed bracket.
+ Example: Var4 = arr[4]
 
 What is the first index of a list? Why?
 
