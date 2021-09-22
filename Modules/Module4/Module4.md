@@ -150,12 +150,10 @@ Expected:  The Number is 360
 Define a function that takes 2 or more string parameters and prints a single line using them as part of a functional string. The function may do anything you chose but the function name and parameter names must be representative of what they are.
 
  - Answer: 
- student:str = "Ezequiel Ramirez"
- time:str = "12:31 AM"
- 
- Pain = f"{student} is finishing his homework at {time}"
+ def Pain(student:str, time:str):
+        print(f"{student} is finishing his homework at {time}")
 
- print(Pain)
+Pain("Ezequiel Ramirez", "12:31 AM")
 
 Refer to this documentation webpage and google for the exercises below:
 https://www.w3schools.com/python/python_ref_string.asp
@@ -167,7 +165,7 @@ Which code returns the length of the string s0: len("s0")
 
 s0 = "What is my length? Store it as a number in a variable."
 
- - Answer: Length = len("s0")
+ - Answer: Length = len(s0)
 
 How do you create a substring in python?
 Create a substring of s1 containing only my name. Store it in a variable called ss1.
@@ -175,8 +173,7 @@ https://www.freecodecamp.org/news/how-to-substring-a-string-in-python/
 
 s1 = "Hello Student! My name is Carlos Jose Cobián. I enjoy coding and video games!"
 
- - Answer: ss1 = "Carlos Jose Cobián"
-           string[start:end]
+ - Answer: ss1 = s1[26:44]
 
 Capitalize every letter of ss1 using a function. Store it in a variable called SS1.
 
