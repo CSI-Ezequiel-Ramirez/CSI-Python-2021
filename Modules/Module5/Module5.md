@@ -71,9 +71,21 @@ print(f"Computer selected: {computerChoice}")
 Give a python example for each logic operator in the module image.
 
  - Answers:
-   - OR: Person = "Alive" or "Dead"
-   - AND: Person = "Alive" and "Dead"
-   - NOT: Person = "Alive" not "Dead"
+   - OR: 
+   PotentialPresent1 = "Action Figure"
+   PotentialPresent2 = "Game Console"
+   if (PotentialPresent1 == "Action Figure" (or) PotentialPresent2 == "Game Console"):
+      print("Your Christmas present is either an action figure or a game console.")
+   - AND:
+   Notebook = 1
+   Pencil = 3
+   if (Notebook > 0 (or) Pencil > 0):
+      print("You are prepared for today's assignment!")
+   - NOT: 
+   Health = "Good"
+   Status = "Alive"
+   if (not(Health == "Good" (and) Status == "Alive"))
+      print("The person is dead lol.")
 
 
 Type down any class notes below this sentence:
