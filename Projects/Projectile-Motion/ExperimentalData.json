@@ -1,0 +1,9 @@
+{
+    "WeaponName": "ASh-12",
+    "CartridgeCaliber": "12.7x55mm",
+    "AmmunitionType": "12.7x55mm STs-130",
+    "Velocity": 285,
+    "BuildingName": "Lotte World Tower",
+    "BuildingHeight": 555,
+    "Gravity": 9.8
+}
