@@ -39,25 +39,38 @@ ExperimentData = {
 
 import ExperimentalData
 from ExperimentalData import ExperimentalData
-def Experiment(experimentalData:ExperimentalData):
-    time = round(math.sqrt(2 * experimentalData.BuildingHeight/experimentalData.Gravity), 2)
-    DeltaX = round(experimentalData.Velocity * time, 2)
-    print(f"For this experiment I shot an {experimentalData.WeaponName} from the {experimentalData.BuildingName}, which is located {experimentalData.BuildingHeight} meters high, which after being shot with the standard gravity of {experimentalData.Gravity} meters per second, flies for {time} seconds at {DeltaX} meters per second.")
+
+##def Experiment(experimentalData:ExperimentalData):
+   ## time = round(math.sqrt(2 * experimentalData.BuildingHeight/experimentalData.Gravity), 2)
+    ##DeltaX = round(experimentalData.Velocity * time, 2)
+   ## print(f"For this experiment I shot an {experimentalData.WeaponName} from the {experimentalData.BuildingName}, which is located {experimentalData.BuildingHeight} meters high, which after being shot with the standard gravity of {experimentalData.Gravity} meters per second, flies for {time} seconds at {DeltaX} meters per second.")
 
 myData = ExperimentalData("ASh-12", "12.7x55mm", "12.7x55mm STs-130", 285, "Lotte World Tower", 555, 9.8)
-Experiment(myData)
+#Experiment(myData)
 
+#Output Path
 myOutputPath = Path(__file__).parents[0]
 myOutputFilePath = os.path.join(myOutputPath, "ExperimentalData.json")
 
+#Data set of all the experimental data.
+myDataSet = [ #Change the guns and other values. ExperimentalData stays the same.
+    ExperimentalData("ASh-12", "12.7x55mm", "12.7x55mm STs-130", 285, "Lotte World Tower", 555, "Earth"),
+    ExperimentalData("AK-104", "7.62x39mm", "7.62x39mm BP gzh", 730, "Lotte World Tower", 555, "Uranus"),
+    ExperimentalData("AS VAL", "9x39mm", "9x39 mm SP5 gs", 290, "Lotte World Tower", 555, "Mars"),
+    ExperimentalData("RPK-16", "5.45x39mm", "5.45x39mm PS gs", 890, "Lotte World Tower", 555, "Jupiter"),
+    ExperimentalData("M1A", "7.62x51mm NATO", "7.62x51mm M80", 833, "Lotte World Tower", 555, "Neptune")
+]
+#ExperimentalData(myDataSet[0])
+
+#Serialization 
 with open(myOutputFilePath, "w") as outfile:
     json.dump(myData.__dict__, outfile)
 
-myDataSet = [ #Change the guns and other values. ExperimentalData stays the same.
-    ExperimentalData("ASh-12", "12.7x55mm", "12.7x55mm STs-130", 285, "Lotte World Tower", 555, 9.8),
-    ExperimentalData("AK-104", "7.62x39mm", "7.62x39mm BP gzh", 730, "Lotte World Tower", 555, 9.8),
-    ExperimentalData("AS VAL", "9x39mm", "9x39 mm SP5 gs", 290, "Lotte World Tower", 555, 9.8),
-    ExperimentalData("RPK-16", "5.45x39mm", "5.45x39mm PS gs", 890, "Lotte World Tower", 555, 9.8),
-    ExperimentalData("M1A", "7.62x51mm NATO", "7.62x51mm M80", 833, "Lotte World Tower", 555, 9.8)
-]
-ExperimentalData(myDataSet[0])
+with open(myOutputFilePath, "w") as outfile:
+    json.dump([data.__dict__ for data in myDataSet], outfile)
+
+Deserialize = open(myOutputFilePath,)
+ExperimentJSON = json.load(Deserialize)
+
+for e in ExperimentJSON:
+    ExperimentalData(**e).Run()
