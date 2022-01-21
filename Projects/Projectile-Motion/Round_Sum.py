@@ -1,5 +1,3 @@
-#The purpose of this script is to round three integer values to their next multiple of 10, and then return their sum.
-
 def Round_Sum(a, b, c):
 #This is the function that contains the integers that will be rounded up.
       return Round10(a) + Round10(b) + Round10(c)
