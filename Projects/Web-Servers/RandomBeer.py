@@ -1,5 +1,5 @@
 class RandomBeer:
-    def __init__(self, id:int, uid:str, brand:str, name:str, style:str, hop:str, yeast:str, malts:str, ibu:str, alcohol:str, blg:str):
+    def __init__(self, id:int, uid:str, brand:str, name:str, style:str, hop:str, yeast:str, malts:str, ibu:int, alcohol:str, blg:int):
         self.id = id
         self.uid = uid
         self.brand = brand

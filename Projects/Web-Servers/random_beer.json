@@ -7,7 +7,7 @@
     "hop": "Cashmere",
     "yeast": "1028 - London Ale",
     "malts": "Munich",
-    "ibu": "42 IBU",
+    "ibu": 42,
     "alcohol": "6.6%",
-    "blg": "15.6°Blg"
+    "blg": 15.6
 }
