@@ -14,13 +14,11 @@ beers:RandomBeer = []
 myPath = Path(__file__).parents[0]
 myFilePath = os.path.join(myPath, 'responses')
 
-if not os.path.exists("responses"):
+if not os.path.exists(myFilePath):
     os.mkdir(myFilePath)
     print("Directory " , "responses" , " created.")
 else:
     print("Directory ", "responses" , " created.")
-
-
 
 # loop 100 times
 i = 1
@@ -29,7 +27,7 @@ Req = urllib.request.Request(BeerURL)
 RequestData = json.loads(urllib.request.urlopen(Req).read())
 
 while i <= 100:
-    i + 1
+    i += 1
     Req = urllib.request.Request(BeerURL)
     RequestData = json.loads(urllib.request.urlopen(Req).read())
 
@@ -38,4 +36,7 @@ while i <= 100:
         beers.append(beer)
         print(beer.name)
 
+        myFinalPath = os.path.join(myFilePath, f"{beer.uid}.json")
 
+        with open(myFinalPath, "w") as outfile:
+            json.dump(beer.__dict__, outfile)
