@@ -18,14 +18,15 @@ def Intro():
 def PlayAgain():
     Prompt = input("Would you like to try another GAMER meme? Enter 'Y' for yes and 'N' for no: ").upper()
     if Prompt == "Y":
-        print("THIS IS A PLACEHOLDER")
-        #Placeholder for now.
+        print("Alrighty then! Let's do this!")
+        HangMeMan()
+        
     else:
         print("I am judging you intensely.")
 
+Intro()
+
 def HangMeMan():
-    Intro()
-    
     Characters = "QWERTYUIOPASDFGHJKLZXCVBNM"
     Meme = getMeme()
     CharactersGuessed = []
@@ -112,13 +113,22 @@ def HangMeMan():
     while Guessed == False and Attempts > 0:
         print("You have " + str(Attempts) + " attempts remaining.")
         Guess = input("Try guessing a letter or, if you're feeling lucky, try to guess the whole phrase: ").upper()
+        
         if len(Guess) == 1:
             if Guess not in Characters:
                 print("I said to input a letter, not whatever that is!")
             elif Guess in CharactersGuessed:
                 print("You already tried that letter, you silly little STOOPID BOY!")
             elif Guess not in Meme:
-                print("Oops! That letter is not in the dank meme of choice.")
-                CharactersGuessed.append(Guess)
                 Attempts = -1
                 print(HungMan)
+                print("Oops! That letter is not in the dank meme of choice.")
+                CharactersGuessed.append(Guess)
+            elif Guess in Meme:
+                print(HungMan)
+                print("Poggers! That letter is in the meme!")
+                CharactersGuessed.append(Guess)
+            else:
+                print("Dude what the hell did you do get this???")
+        
+        
