@@ -12,7 +12,7 @@ def Intro():
     if Name == "Based":
         print("""Wow, you really are Based! Well then Based Department, let's begin!
               My Meme Machine will randomly select a meme, be it a word or short phrase. 
-              You will have to guess that dank meme by inputting its characters before the man gets hanged.
+              You will have to guess that dank meme by inputting its characters before the man gets hung.
               Don't feel too bad for him though, he plays Genshin Impact.""")
     else:
         print("What? Your name isn't the word Based written in this specific way? Now THAT's cringe. I don't want no normies in my Hangman, SCRAM!")
@@ -117,8 +117,8 @@ def HangMeMan():
             print("   |         ")
             print("___|______________")
             
-    print(HungMan)
-    print("The meme contains ", len(Meme), " characters.")
+    HungMan()
+    print("The meme contains", len(Meme), "characters.")
     print(len(Meme) * "_")
     #String's that say the amount of characters in the meme, then visually represents it with underscores.
     
@@ -126,7 +126,7 @@ def HangMeMan():
         #This is the bulk of the code that makes the magic happen.
         print("You have " + str(Attempts) + " attempts remaining.")
         #This string lists the remaining attempts.
-        Guess = input("Try guessing an letter, an - to represent a space or, if you're feeling lucky, try to guess the whole phrase: ").upper()
+        Guess = input("Try guessing a letter, an - to represent a space or, if you're feeling lucky, try to guess the whole phrase: ").upper()
         #The string which allows you to input your answer.
         
         if len(Guess) == 1:
@@ -136,13 +136,13 @@ def HangMeMan():
                 #This is for stupid idiot babies with a lack ofobject permanence. Oh, and for characters they already tried I guess.
             elif Guess not in Meme:
                 Attempts -= 1
-                print(HungMan)
+                HungMan()
                 print("Oops! That letter is not in the dank meme of choice.")
                 CharactersGuessed.append(Guess)
                 print(CharactersGuessed)
                 #This is for characters not in the meme. Very cool and interesting, I know.
             elif Guess in Meme:
-                print(HungMan)
+                HungMan()
                 print("Poggers! That letter is in the meme!")
                 CharactersGuessed.append(Guess)
                 print(CharactersGuessed)
@@ -163,13 +163,13 @@ def HangMeMan():
                 PlayAgain()
             else:
                 Attempts -= 1
-                print(HungMan)
+                HungMan()
                 print("Congratulations, you got the meme WRONG! You absolute baffoon! >:)")
                 #This is what plays if the user becomes the loser and sucks ass... ASPIRATIONS IN LIFE I MEAN
         
         else:
             Attempts -= 1
-            print(HungMan)
+            HungMan()
             print("Bruh, the length of what you entered is not the same as the meme. -1 attempts for being STOOPID.")
             #This last else statement basically just removes an attempt for typing something that isn't one character or the length of the word.
         
@@ -192,7 +192,7 @@ def HangMeMan():
             PlayAgain()
             #This if statement is basically the win condition, which then proceeds to initiate the function to play again.
         elif Attempts == 0:
-            print(HungMan)
+            HungMan()
             print("Imagine running out of attempts and losing the game. Literally could not be me.")
             PlayAgain()
             #Meanwhile, this elif is the lose condition, again activating the restart function.
