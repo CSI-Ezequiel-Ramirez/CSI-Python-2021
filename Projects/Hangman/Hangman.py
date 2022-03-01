@@ -36,7 +36,7 @@ Intro()
 
 def HangMeMan():
     Characters = "QWERTYUIOPASDFGHJKLZXCVBNM-"
-    SpecialCharacters = "!@#$%^&*()_+=`~;:[]{/?=}|<>,./"
+    SpecialCharacters = "!@#$%^&*()_+=`~;:[]{/?=}|<>,./1234567890"
     Meme = getMeme()
     CharactersGuessed = []
     Attempts = 6
