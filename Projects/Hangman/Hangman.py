@@ -36,6 +36,7 @@ Intro()
 
 def HangMeMan():
     Characters = "QWERTYUIOPASDFGHJKLZXCVBNM-"
+    SpecialCharacters = "!@#$%^&*()_+=`~;:[]{/?=}|<>,./"
     Meme = getMeme()
     CharactersGuessed = []
     Attempts = 6
@@ -134,6 +135,9 @@ def HangMeMan():
             if Guess in CharactersGuessed:
                 print("You already tried that letter, you silly little STOOPID BOY!")
                 #This is for stupid idiot babies with a lack ofobject permanence. Oh, and for characters they already tried I guess.
+            elif Guess in SpecialCharacters:
+                print("I said to input a letter, not whatever that is!")
+                #This is the preventative measure for special characters.
             elif Guess not in Meme:
                 Attempts -= 1
                 HungMan()
@@ -147,9 +151,6 @@ def HangMeMan():
                 CharactersGuessed.append(Guess)
                 print(CharactersGuessed)
                 #This is for gamers who get a character correct.
-            elif Guess not in Characters:
-                print("I said to input a letter, not whatever that is!")
-                #This is the preventative measure for special characters.
             else:
                 print("Dude what the hell did you do get this???")
                 #A really good question for something going horribly wrong.
