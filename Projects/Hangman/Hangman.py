@@ -2,7 +2,7 @@ import random
 # The random package is very important for the code to work perfectly.
 
 def getMeme(): 
-    HangmanWordList = ["MEME", "MEMES", "DAT-BOI", "SANIC", "WEEGEE", "I-WONDER-WHATS-FOR-DINNER", "YTP", "CRINGE", "FIDGET-SPINNER", "DEAD-MEME", "MLG", "AH-YES-THE-FLOOR-HERE-IS-MADE-OF-FLOOR", "GET-REAL", "NYAN-CAT", "WE-ARE-NUMBER-ONE", "STEAMED-HAMS", "DEEZ-NUTZ", "GOTTEM-GGS", "WE-LIVE-IN-A-SOCIETY", "YOUR-MOM-GAY", "BRUH-MOMENT", "MEGALOVANIA", "PEPE-HANDS", "WHY-ARE-WE-STILL-HERE", "LIGMA-BALLS", "BASED-AND-REDPILLED", "BIG-SHOT", "HIT-OR-MISS"]
+    HangmanWordList = ["MEME", "MEMES", "DAT BOI", "SANIC", "WEEGEE", "I WONDER WHATS FOR DINNER", "YTP", "CRINGE", "FIDGET SPINNER", "DEAD MEME", "MLG", "AH YES THE FLOOR HERE IS MADE OF FLOOR", "GET REAL", "NYAN CAT", "WE ARE NUMBER ONE", "STEAMED HAMS", "DEEZ NUTZ", "GOTTEM GGS", "WE LIVE IN A-SOCIETY", "YOUR MOM GAY", "BRUH MOMENT", "MEGALOVANIA", "PEPE HANDS", "WHY ARE WE STILL HERE", "LIGMA BALLS", "BASED AND REDPILLED", "BIG SHOT", "HIT OR MISS"]
     return random.choice(HangmanWordList).upper()
     #The full list of words used for the game, with them all in upper case.
 
@@ -35,7 +35,7 @@ def PlayAgain():
 Intro()
 
 def HangMeMan():
-    Characters = "QWERTYUIOPASDFGHJKLZXCVBNM-"
+    Characters = "QWERTYUIOPASDFGHJKLZXCVBNM "
     SpecialCharacters = "!@#$%^&*()_+=`~;:[]{/?=}|<>,./1234567890"
     Meme = getMeme()
     CharactersGuessed = []
@@ -127,7 +127,7 @@ def HangMeMan():
         #This is the bulk of the code that makes the magic happen.
         print("You have " + str(Attempts) + " attempts remaining.")
         #This string lists the remaining attempts.
-        Guess = input("Try guessing a letter, an - to represent a space or, if you're feeling lucky, try to guess the whole phrase: ").upper()
+        Guess = input("Try guessing a letter, inputting a space or, if you're feeling lucky, try to guess the whole phrase: ").upper()
         #The string which allows you to input your answer.
         
         if len(Guess) == 1:
