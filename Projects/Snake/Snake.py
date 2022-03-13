@@ -4,10 +4,12 @@ import random #Imports the Random package, used for randomizing the location of 
 
 pygame.init() #Initializes the Pygame module, which then allows everything that comes after to function.
 
-white = (255, 255, 255) #Sets the RGB value for the background color.
+white = (255, 255, 255) #Sets the RGB value for the background color of the Game Over screen.
+yellow = (255, 255, 102) #Sets the RGB value for... something that isn't being used yet.
 black = (0, 0, 0) #Sets the RGB value for the player-controlled Snake.
 red = (255, 0, 0) #Sets the RBG value for the the text seen when getting a game over.
-blue = (0, 0, 255) #Sets the RBG value for the squares the Snake has to collect.
+green = (0, 255, 0) #Sets the RGB value for the food the Snake has to collect
+blue = (0, 0, 255) #Sets the RBG value for the background color.
 
 dis_width = 800 #Sets the width of the Snake.
 dis_height  = 600 #Sets the height of the Snake.
@@ -20,7 +22,12 @@ clock = pygame.time.Clock() #Variable that keeps track of the time passed.
 snake_block = 10 #Creates a variable that represents the Snake block.
 snake_speed = 30 #The variable that controls the speed of the Snake.
  
-font_style = pygame.font.SysFont(None, 50) #The font of ingame text. 
+font_style = pygame.font.SysFont("bahnschrift", 25) #The font used for the Game Over screen.
+score_font = pygame.font.SysFont("comicsansms", 35) #The font used for the user for the score.
+
+def our_snake(snake_block, snake_list): #The function used whenever a block needs to be added for the Snake's size.
+    for x in snake_list: #Adds an extra block to the snake every time it collects food.
+        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block]) #Visually draws said added block.
 
 
 def message(msg,color): #This function is called whenever text needs to be displayed onscreen.
@@ -38,6 +45,9 @@ def gameLoop():  #Creates the function that makes up the bulk of the game's code
     x1_change = 0 #The variable that handles the change in x axis position.
     y1_change = 0 #The variable that handles the change in y axis position.
     
+    snake_List = [] #Stores the length of the Snake within brackets.
+    Length_of_snake = 1 #Keeps track of the length of the Snake as a variable number.
+    
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0 #Places the food in a random position of the x axis.
     foody = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0 #Places the food in a random position of the y axis.
 
@@ -46,6 +56,7 @@ def gameLoop():  #Creates the function that makes up the bulk of the game's code
         while game_close == True: #This while loop will display the Game Over text for when the player loses the game.
             dis.fill(white) #Fills the screen with nothing but white noise, just like my soul.
             message("You Lost! Press Q-Quit or C-Play Again", red) #The Game Over text.
+            
             pygame.display.update() #Updates the on-screen visuals.
  
             for event in pygame.event.get(): #Initiates the for loop whenever any event happens in-game.
@@ -75,16 +86,31 @@ def gameLoop():  #Creates the function that makes up the bulk of the game's code
         
         if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0: #This elif checks every frame if the Snake is out-of-bounds or not.
             game_close = True #Initiates a Game Over if the player tries to go out-of-bounds.
-                            
         x1 += x1_change #This is what actually moves the users x axis position after the key inputs.
         y1 += y1_change #This is what actually moves the users y axis position after the key inputs.
-        dis.fill(white) #Applies the previous defined RGB values to the background.
-        pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block]) #Draws the food to be consumed by the Snake.
-        pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block]) #Draws the square-shaped Snake.
+        dis.fill(blue) #Applies the previous defined RGB values to the background.
+        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block]) #Visually draws the collectable food.
+        snake_Head = [] #Calls the brackets which contain the length of the Snake.
+        snake_Head.append(x1) #Adds an extra block to the Snake when moving on the x axis.
+        snake_Head.append(y1) #Adds an extra block to the Snake when moving on the x axis.
+        snake_List.append(snake_Head) #Appends the default Snake head the player always starts out with to the list.
+        if len(snake_List) > Length_of_snake: #The default length of the Snake is one block, so if the length contained within the list exceeds it, then it will replace that length with the new length.
+            del snake_List[0] #Deletes the old version of the list.
+ 
+        for x in snake_List[:-1]: #Initiates whenever the Snake collides with itself.
+            if x == snake_Head: #Whenever the Snake's head collides with the rest of its body, the game ends.
+                game_close = True #Ends the game.
+ 
+        our_snake(snake_block, snake_List) #Aside from having a very communist name, this just handles the actual length of the Snake.
+ 
+        
         pygame.display.update() #Updates the active display of the game every other frame.
         
         if x1 == foodx and y1 == foody: #Checks to see if the Snake's position is the same as that of the food.
-            print("RUN") #oh god i am in great pain please help me.
+            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0 #Randomizes the food to a different spot on the x axis.
+            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0 #Randomizes the food to a different spot on the y axis.
+            Length_of_snake += 1
+        
         clock.tick(snake_speed) #Makes the game at the snake's speed, which in this case is 30, so it runs at 30 FPS.
 
     pygame.quit() #Quits the game. Pretty self-explanatory.
