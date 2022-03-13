@@ -5,7 +5,7 @@ import random #Imports the Random package, used for randomizing the location of 
 pygame.init() #Initializes the Pygame module, which then allows everything that comes after to function.
 
 white = (255, 255, 255) #Sets the RGB value for the background color of the Game Over screen.
-yellow = (255, 255, 102) #Sets the RGB value for... something that isn't being used yet.
+yellow = (255, 255, 102) #Sets the RGB value for the text used to keep track of the users score.
 black = (0, 0, 0) #Sets the RGB value for the player-controlled Snake.
 red = (255, 0, 0) #Sets the RBG value for the the text seen when getting a game over.
 green = (0, 255, 0) #Sets the RGB value for the food the Snake has to collect
@@ -24,6 +24,13 @@ snake_speed = 30 #The variable that controls the speed of the Snake.
  
 font_style = pygame.font.SysFont("bahnschrift", 25) #The font used for the Game Over screen.
 score_font = pygame.font.SysFont("comicsansms", 35) #The font used for the user for the score.
+
+
+def Your_score(score): #Function used to keep track of your score.
+    value = score_font.render("Your Score: " + str(score), True, yellow) #Renders out the text and number of your score.
+    dis.blit(value, [0, 0]) #Transfers the users score value.
+
+
 
 def our_snake(snake_block, snake_list): #The function used whenever a block needs to be added for the Snake's size.
     for x in snake_list: #Adds an extra block to the snake every time it collects food.
